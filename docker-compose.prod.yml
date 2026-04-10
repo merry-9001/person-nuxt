@@ -1,0 +1,7 @@
+services:
+  nuxt3-demo:
+    container_name: nuxt3-demo
+    image: ${APP_IMAGE:-your-dockerhub-username/nuxt3-demo:latest}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
