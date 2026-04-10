@@ -3,6 +3,8 @@ name: CI/CD
 on:
   pull_request:
   push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -31,7 +33,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/master')
     env:
       IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/nuxt3-demo
 
